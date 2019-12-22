@@ -27,8 +27,6 @@ class App extends Component{
     console.log(body);
     return body;
   }
-
-
   
   render(){
     return( 
