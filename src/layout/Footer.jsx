@@ -25,9 +25,7 @@ class Footer extends Component{
     return(
       <BottomNavigation
             value={value}
-            onChange={(event, newValue) => {
-              
-            }}
+            onChange={(event, newValue) => {}}
             showLabels
             className={classes.root}
           >

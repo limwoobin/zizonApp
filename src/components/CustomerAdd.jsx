@@ -16,6 +16,9 @@ const styles = theme => ({
 });
 
 class CustomerAdd extends Component{
+    // static defaultProps = {
+
+    // }    -> class 형에서 쓰이는 디폴트
     constructor(props){
         super(props);
         this.state = {
@@ -27,12 +30,15 @@ class CustomerAdd extends Component{
             fileName: '',
             open: false
         }
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);
-        this.handleValueChange = this.handleValueChange.bind(this);
-        this.addCustomer = this.addCustomer.bind(this);
-        this.handleClickOpen = this.handleClickOpen.bind(this);
-        this.handleClose = this.handleClose.bind(this);
+        // this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        // this.handleFileChange = this.handleFileChange.bind(this);
+        // this.handleValueChange = this.handleValueChange.bind(this);
+        // this.addCustomer = this.addCustomer.bind(this);
+        // this.handleClickOpen = this.handleClickOpen.bind(this);
+        // this.handleClose = this.handleClose.bind(this);
+        // 함수를 화살표 함수로 정의했으면 바인딩안해줘도 된다
+        // 바인딩을 해주는 이유는 일반함수로 선언시 버튼클릭과정에서 this의 연결이 끊어지기 때문
+        // 일반 함수는 호출된곳을 this 로 참조하기 때문
     }    
 
     handleFormSubmit = (e) => {
@@ -151,5 +157,9 @@ class CustomerAdd extends Component{
         );
     }
 }
+
+// CustomerAdd.defaultProps = {
+
+// } -> 함수형에서 쓰이는 방식(hooks)
 
 export default withStyles(styles)(CustomerAdd);
