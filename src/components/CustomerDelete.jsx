@@ -29,10 +29,11 @@ class CustomerDelete extends Component{
     }
 
     deleteCustomer = (id) => {
+        
         const url = '/dr/customer/delete/' + id;
         fetch(url , {
             method:'DELETE'
-        });
+        }).then(res => console.log(res));
         this.props.stateRefresh();
     }
 
