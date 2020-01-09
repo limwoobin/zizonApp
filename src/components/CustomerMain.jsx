@@ -1,4 +1,4 @@
-import React , {Component, Fragment} from 'react';
+import React , {Component} from 'react';
 import Customer from './Customer';
 import CustomerAdd from './CustomerAdd';
 import Paper from '@material-ui/core/Paper';
@@ -17,6 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import LoginForm from '../members/LoginForm';
 
 const styles = theme => ({
     root: {
@@ -187,6 +188,9 @@ class CustomerMain extends Component{
                                 onChange={this.handleValueChange}
                             />
                             </div>
+                            {/* <div className={classes.grow} /> */}
+                            &nbsp;&nbsp;&nbsp;
+                            <LoginForm />
                         </Toolbar>    
                     </AppBar>
                     <div className={classes.menu}>

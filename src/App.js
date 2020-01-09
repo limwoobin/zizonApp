@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import './App.scss';
 import {hot} from 'react-hot-loader';
 import CustomerMain from './components/CustomerMain';
@@ -14,12 +14,13 @@ class App extends Component{
 
   render(){
     return(
-      <Fragment>
+      <>
         <CustomerMain />
         <Footer />
-      </Fragment>
+      </>
     );
   }
 }
 
 export default hot(module)(App);
+// export default App;
