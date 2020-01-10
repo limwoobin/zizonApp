@@ -17,7 +17,8 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import LoginForm from '../members/LoginForm';
+import SignInForm from '../members/SignInForm';
+import SignUpForm from '../members/SignUpForm';
 
 const styles = theme => ({
     root: {
@@ -188,9 +189,10 @@ class CustomerMain extends Component{
                                 onChange={this.handleValueChange}
                             />
                             </div>
-                            {/* <div className={classes.grow} /> */}
                             &nbsp;&nbsp;&nbsp;
-                            <LoginForm />
+                            <SignInForm />
+                            &nbsp;&nbsp;
+                            <SignUpForm />
                         </Toolbar>    
                     </AppBar>
                     <div className={classes.menu}>
