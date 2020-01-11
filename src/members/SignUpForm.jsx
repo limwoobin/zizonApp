@@ -7,19 +7,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-  } from '@material-ui/pickers';
-import 'date-fns';
+import DateForm from '../common/DateForm';
 
-const styles = theme => ({
-    hidden: {
-        display: 'none'
-    },
-});
+// const styles = theme => ({
+//     hidden: {
+//         display: 'none'
+//     },
+// });
 
 class SignUpForm extends Component{
     constructor(props){
@@ -30,7 +24,7 @@ class SignUpForm extends Component{
             userPwd : '',
             userNm : '',
             userPhone : '',
-            birthday: ''
+            birthday: null
         }
     }
 
@@ -55,7 +49,7 @@ class SignUpForm extends Component{
             userPwd : '',
             userNm : '',
             userPhone : '',
-            birthday: ''
+            birthday: null
         });
     }
 
@@ -63,6 +57,12 @@ class SignUpForm extends Component{
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
+    }
+
+    birthdayCallback = (callBackDate) => {
+        this.setState({
+            birthday: callBackDate,
+        })
     }
 
     addMemberInfo = () => {
@@ -81,16 +81,8 @@ class SignUpForm extends Component{
         } , config);
     }
 
-    selectedDate = () => {
-
-    }
-
-    handleDateChange = () => {
-
-    }
-
     render(){
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return(
             <div>
                 <Button variant="contained" color="#fff000" onClick={this.handleClickOpen}>
@@ -107,21 +99,7 @@ class SignUpForm extends Component{
                             <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userNm" name="userNm" value={this.state.userNm} label="name" type="text" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userPhone" name="userPhone" value={this.state.userPhone} label="Phone number" type="text" onChange={this.handleValueChange} fullWidth />
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <Grid container justify="space-around">
-                                {/* <KeyboardDatePicker
-                                    margin="normal"
-                                    id="date-picker-dialog"
-                                    label="Date picker dialog"
-                                    format="MM/dd/yyyy"
-                                    value={this.selectedDate}
-                                    onChange={this.handleDateChange}
-                                    KeyboardButtonProps={{
-                                        'aria-label': 'change date',
-                                    }}
-                                /> */}
-                                </Grid>
-                            </MuiPickersUtilsProvider>
+                            <DateForm callBackData={this.birthdayCallback}/>
                         </DialogContent>
                     <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
