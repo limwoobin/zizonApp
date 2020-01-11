@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {post} from 'axios';
+//import {post} from 'axios';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -9,11 +9,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
-const styles = theme => ({
-    hidden: {
-        display: 'none'
-    },
-});
+// const styles = theme => ({
+//     hidden: {
+//         display: 'none'
+//     },
+// });
 
 class SignInForm extends Component{
     constructor(props){
@@ -49,7 +49,7 @@ class SignInForm extends Component{
     }
 
     render(){
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return(
             <div>
                 <Button variant="contained" color="#fff000" onClick={this.handleClickOpen}>
