@@ -89,7 +89,7 @@ class CustomerAdd extends Component{
             }
         };
         return post(url , formData , config);
-        // return axios.post(url , {
+        // return post(url , {
         //     //headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
         //     headers:{'content-type':'multipart/form-data'},
         //     image: this.state.file,
@@ -97,7 +97,7 @@ class CustomerAdd extends Component{
         //     birthday: this.state.birthday,
         //     gender: this.state.gender,
         //     job: this.state.job
-        // });
+        // } , config);
     }
 
     handleClickOpen = () => {
