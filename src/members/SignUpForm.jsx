@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import axios from 'axios';
+import {post} from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -24,7 +24,7 @@ class SignUpForm extends Component{
             userPwd : '',
             userNm : '',
             userPhone : '',
-            birthday: null
+            birthday: new Date()
         }
     }
 
@@ -33,7 +33,16 @@ class SignUpForm extends Component{
         this.addMemberInfo()
         .then((response) => {
             console.log(response.data);
-        })
+        });
+
+        this.setState({
+            open: false,
+            // userEmail: '',
+            // userPwd: '',
+            // userNm: '',
+            // userPhone: '',
+            // birthday: null
+        });
     }
 
     handleClickOpen = () => {
@@ -67,18 +76,28 @@ class SignUpForm extends Component{
 
     addMemberInfo = () => {
         const url = '/dr/member/insert';
+        const formData = new FormData();
+        formData.append('userEmail' , this.state.userEmail);
+        formData.append('userPwd' , this.state.userPwd);
+        formData.append('birthday' , this.state.birthday);
+        formData.append('userNm' , this.state.userNm);
+        formData.append('userPhone' , this.state.userPhone);
         const config = {
             headers: {
+                //'content-type':'multipart/form-data'
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             }
-        }
-        return axios.post(url , {
-            userEmail: this.state.userEmail,
-            userPwd: this.state.userPwd,
-            userNm: this.state.userNm,
-            userPhone: this.state.userPhone,
-            birthday: this.state.birthday
-        } , config);
+        };
+        return post(url , formData , config);
+        // return post(url , 
+        //     {
+        //         userEmail: this.state.userEmail,
+        //         userPwd: this.state.userPwd,
+        //         userNm: this.state.userNm,
+        //         userPhone: this.state.userPhone,
+        //         birthday: this.state.birthday
+        //     } ,
+        //      config);
     }
 
     render(){
