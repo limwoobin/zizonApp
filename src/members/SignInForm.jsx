@@ -67,7 +67,7 @@ class SignInForm extends Component{
                             Cancel
                         </Button>
                         <Button onClick={this.handleFormSubmit} color="primary">
-                            Sign Up
+                            Sign In
                         </Button>
                     </DialogActions>
                 </Dialog>
