@@ -41,7 +41,6 @@ class SignUpForm extends Component{
         if(this.state.userEmailStatus === 1){
             this._userEmailChk(this.state.userEmail)
                 .then((response) => {
-                console.log('asdadfsdfsdfsdfsdf');
                 console.log('response:' + response);
                 if(response.code === 'DRG00'){
                     this.setState({
@@ -136,9 +135,16 @@ class SignUpForm extends Component{
         const {userEmailStatus} = this.state;
         let emailAvailableCheckButton = null;
         if(userEmailStatus === 0){
-            emailAvailableCheckButton = <Button variant="outlined" color="primary" onClick={this.handleMailAvailableCheck}>Check for duplicate email</Button>
+            emailAvailableCheckButton =  <Button variant="outlined" color="primary" onClick={this.handleMailAvailableCheck}>Check for duplicate email</Button>
         }else{
-            emailAvailableCheckButton = <Button variant="outlined" disabled>Email is Available</Button>
+            emailAvailableCheckButton =  <Button variant="outlined" disabled>Email is Available</Button>
+        }
+
+        let emailInputType = null;
+        if(userEmailStatus === 0){
+            emailInputType = <TextField autoFocus margin="dense" id="userEmail" name="userEmail" value={this.state.userEmail} label="Email Address" type="email" onChange={this.handleValueChange} fullWidth />
+        }else{
+            emailInputType = <TextField autoFocus margin="dense" disabled id="userEmail" name="userEmail" value={this.state.userEmail} label="Email Address" type="email" onChange={this.handleValueChange} fullWidth />
         }
         return(
             <div>
@@ -152,8 +158,8 @@ class SignUpForm extends Component{
                                 To subscribe to this website, please enter your email address here. We will send updates
                                 occasionally.
                             </DialogContentText>
-                            <TextField autoFocus margin="dense" id="userEmail" name="userEmail" value={this.state.userEmail} label="Email Address" type="email" onChange={this.handleValueChange} fullWidth />
-                            {this.state.userEmailStatus === 0}
+                            {emailInputType}
+                            {/* {this.state.userEmailStatus === 0} */}
                             {emailAvailableCheckButton}&nbsp;&nbsp;&nbsp;
                             <Button variant="outlined" color="primary" onClick={this.handleMailSend}>Send Mail</Button>
                             <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} fullWidth />
