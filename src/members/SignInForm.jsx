@@ -52,7 +52,7 @@ class SignInForm extends Component{
         // const { classes } = this.props;
         return(
             <div>
-                <Button variant="contained" color="#fff000" onClick={this.handleClickOpen}>
+                <Button variant="contained" color="default" onClick={this.handleClickOpen}>
                     Sign In
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">

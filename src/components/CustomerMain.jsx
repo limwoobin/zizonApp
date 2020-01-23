@@ -166,6 +166,7 @@ class CustomerMain extends Component{
             return(
                 <div className={classes.root}>
                     <AppBar position='static'>
+                      <div>
                         <Toolbar>
                             <IconButton className={classes.menuButton} color='inherit' aria-label="Open drawer">
                                 <MenuIcon onClick = {this.handeSlideMenu } />
@@ -193,7 +194,8 @@ class CustomerMain extends Component{
                             <SignInForm />
                             &nbsp;&nbsp;
                             <SignUpForm />
-                        </Toolbar>    
+                        </Toolbar>
+                      </div>    
                     </AppBar>
                     <div className={classes.menu}>
                         <CustomerAdd stateRefresh={this.stateRefresh} />
