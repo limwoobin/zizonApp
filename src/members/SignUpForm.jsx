@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {post} from 'axios';
+import {post , get} from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -36,25 +36,31 @@ class SignUpForm extends Component{
 
     handleMailAvailableCheck = (e) => {
         e.preventDefault();
-        this.verifyEmail(this.state.userEmail)
+        this.verifyEmail(this.state.userEmail);
         console.log(this.state.userEmailStatus);
-        if(this.state.userEmailStatus === 1){
-            this._userEmailChk(this.state.userEmail)
-                .then((response) => {
-                console.log('response:' + response);
-                if(response.code === 'DRG00'){
-                    this.setState({
-                        userEmailStatus: 1
-                    });
-                }else{
-                    alert('Alerdy exists email');
-                }
-            });
-        }
+        // get('/dr/member/overlap/check/' + this.state.userEmail) 
+        this._userEmailChk()
+        .then(response => {
+            let res = response.data;
+            console.log(res);
+            if(res.code === 'DRG00'){
+                this.setState({
+                    userEmailStatus: 2
+                });
+            }else{
+                this.setState({
+                    userEmailStatus: 0
+                })
+                alert('Alerdy exists email');
+            }
+        })
+        .catch(response => {
+            console.log(response);
+        });
     }
 
-    _userEmailChk = (userEmail) => {
-        return 'asd';
+    _userEmailChk = () => {
+       return get('/dr/member/overlap/check/' + this.state.userEmail);
     }
 
     handleFormSubmit = (e) => {
@@ -93,7 +99,7 @@ class SignUpForm extends Component{
         let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         if(email.match(regExp) == null || email === null || email === ''){
             alert('Please check your email'); 
-            return 'asd';
+            return 'FAIL';
         }else{
             this.setState({
                 userEmailStatus: 1

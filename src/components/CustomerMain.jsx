@@ -115,8 +115,8 @@ class CustomerMain extends Component{
               completed: 0,
               searchKeyword: ''
             });
-            this.callApi()
-              .then(res => this.setState({customers: res}))
+            this.callApi()          
+              .then(res => this.setState({customers: res})) 
               .catch(err => console.log(err));
         }
 
