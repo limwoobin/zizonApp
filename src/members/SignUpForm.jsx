@@ -29,7 +29,7 @@ class SignUpForm extends Component{
             userPwdChk : '',
             userNm : '',
             userPhone : '',
-            birthday: new Date(),
+            birthday: null,
             userEmailStatus: 0,
         }
     }
@@ -43,7 +43,7 @@ class SignUpForm extends Component{
         .then(response => {
             let res = response.data;
             console.log(res);
-            if(res.code === 'DRG00'){
+            if(res.code === 'DR00'){
                 this.setState({
                     userEmailStatus: 2
                 });
@@ -65,7 +65,22 @@ class SignUpForm extends Component{
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        this.verifyEmail(this.state.userEmail); // 이메일 인증
+        if(this.state.userEmailStatus === 0){
+            alert('Email is Not Available');
+            return;
+        }else if((this.state.userPwd !== this.state.userPwdChk) && (this.state.userPwd !== '' || this.state.userPwd !== null)){
+            alert('Password does not Match');
+            return;
+        }else if(this.state.userNm !== '' || this.state.userNm !== null){
+            alert('Please Input in your name');
+            return;
+        }else if(this.state.userPhone !== '' || this.state.userPhone !== null){
+            alert('Please Input in your phone number');
+            return;
+        }else if(this.state.birthday !== null){
+            alert('Please select a birthday');
+            return;
+        }
         this._addMemberInfo()
         .then((response) => {
             console.log(response.data);
@@ -167,7 +182,7 @@ class SignUpForm extends Component{
                             {emailInputType}
                             {/* {this.state.userEmailStatus === 0} */}
                             {emailAvailableCheckButton}&nbsp;&nbsp;&nbsp;
-                            <Button variant="outlined" color="primary" onClick={this.handleMailSend}>Send Mail</Button>
+                            {/* <Button variant="outlined" color="primary" onClick={this.handleMailSend}>Send Mail</Button> */}
                             <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userPwdChk" name="userPwdChk" value={this.state.userPwdChk} label="password check" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userNm" name="userNm" value={this.state.userNm} label="name" type="text" onChange={this.handleValueChange} fullWidth />
