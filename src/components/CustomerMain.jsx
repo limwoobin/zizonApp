@@ -9,7 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
-// import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
@@ -19,7 +18,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import SignInForm from '../members/SignInForm';
 import SignUpForm from '../members/SignUpForm';
-import MenuList from '../layout/MenuList';
+import Menu from '../layout/Menu';
 
 const styles = theme => ({
     root: {
@@ -171,7 +170,8 @@ class CustomerMain extends Component{
                         <Toolbar>
                             <IconButton className={classes.menuButton} color='inherit' aria-label="Open drawer">
                                 {/* <MenuIcon onClick = {this.handeSlideMenu } /> */}
-                                <MenuList />
+                                {/* <MenuList /> */}
+                                <Menu />
                             </IconButton>
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                 Drogba`s  &nbsp;&nbsp;&nbsp; IT Blog
