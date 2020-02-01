@@ -1,5 +1,4 @@
 import React , {Component} from 'react';
-import {post , get} from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,6 +8,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DateForm from '../common/DateForm';
 import {withStyles} from '@material-ui/core/styles';
+import {Func} from '../common/common';
+import {API} from '../api/auth';
 
 const styles = theme => ({
     hidden: {
@@ -36,9 +37,9 @@ class SignUpForm extends Component{
 
     handleMailAvailableCheck = (e) => {
         e.preventDefault();
-        this.verifyEmail(this.state.userEmail);
+        let emailCheck = Func.setVerifyEmail(this.state.userEmail);
+        if(emailCheck === 'FAIL') return;
         console.log(this.state.userEmailStatus);
-        // get('/dr/member/overlap/check/' + this.state.userEmail) 
         this._userEmailChk()
         .then(response => {
             let res = response.data;
@@ -60,7 +61,7 @@ class SignUpForm extends Component{
     }
 
     _userEmailChk = () => {
-       return get('/dr/member/overlap/check/' + this.state.userEmail);
+       return API.USER_EMAIL_CHK(this.state.userEmail);
     }
 
     handleFormSubmit = (e) => {
@@ -71,19 +72,22 @@ class SignUpForm extends Component{
         }else if((this.state.userPwd !== this.state.userPwdChk) && (this.state.userPwd !== '' || this.state.userPwd !== null)){
             alert('Password does not Match');
             return;
-        }else if(this.state.userNm !== '' || this.state.userNm !== null){
+        }else if(!this.state.userNm){
             alert('Please Input in your name');
             return;
-        }else if(this.state.userPhone !== '' || this.state.userPhone !== null){
-            alert('Please Input in your phone number');
+        }else if(!this.state.userPhone){
+            alert('Please Check in your phone number');
             return;
-        }else if(this.state.birthday !== null){
+        }else if(!this.state.birthday){
             alert('Please select a birthday');
             return;
         }
         this._addMemberInfo()
         .then((response) => {
-            console.log(response.data);
+            console.log(response.data.code);
+            if(response.data.code === 'DR00'){
+                alert('You have successfully registered');
+            }
         });
 
         this.setState({
@@ -136,19 +140,13 @@ class SignUpForm extends Component{
     }
 
     _addMemberInfo = () => {
-        const url = '/dr/member/insert';
         const formData = new FormData();
         formData.append('userEmail' , this.state.userEmail);
         formData.append('userPwd' , this.state.userPwd);
         formData.append('birthday' , this.state.birthday);
         formData.append('userNm' , this.state.userNm);
         formData.append('userPhone' , this.state.userPhone);
-        const config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-            }
-        };
-        return post(url , formData , config);
+        return API.ADD_Member(formData);
     }
 
     render(){
@@ -186,7 +184,7 @@ class SignUpForm extends Component{
                             <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userPwdChk" name="userPwdChk" value={this.state.userPwdChk} label="password check" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userNm" name="userNm" value={this.state.userNm} label="name" type="text" onChange={this.handleValueChange} fullWidth />
-                            <TextField autoFocus margin="dense" id="userPhone" name="userPhone" value={this.state.userPhone} label="Phone number" type="text" onChange={this.handleValueChange} fullWidth />
+                            <TextField autoFocus margin="dense" id="userPhone" name="userPhone" value={this.state.userPhone} label="Phone number" type="text" placeholder="ex)010-0000-0000" onChange={this.handleValueChange} fullWidth />
                             <DateForm callBackData={this.birthdayCallback}/>
                         </DialogContent>
                     <DialogActions>

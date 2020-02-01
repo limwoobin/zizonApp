@@ -6,7 +6,10 @@ const config = {
     }
 }
 
-export const GET_Customers = () => axios.get('/dr/customer/customers');
-export const ADD_Customer = (data) => axios.post('/dr/customer/insert');
-export const ADD_Member = (data) => axios.post('/dr/member/insert');
-export const LOGIN = (data) => axios.post('/dr/member/login' , data , config);
+export const API = {
+    GET_Customers : () => axios.get('/dr/customer/customers'),
+    ADD_Customer : (data) => axios.post('/dr/customer/insert'),
+    ADD_Member : (data) => axios.post('/dr/member/insert' , data , config),
+    LOGIN : (data) => axios.post('/dr/member/login' , data , config),
+    USER_EMAIL_CHK : (data) => axios.get('/dr/member/overlap/check/' + data),
+}
