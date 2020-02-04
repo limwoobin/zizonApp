@@ -9,16 +9,16 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import SignInForm from '../members/SignInForm';
-import SignUpForm from '../members/SignUpForm';
-import Menu from '../layout/Menu';
+// import SearchIcon from '@material-ui/icons/Search';
+// import InputBase from '@material-ui/core/InputBase';
+// import Typography from '@material-ui/core/Typography';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import IconButton from '@material-ui/core/IconButton';
+// import SignInForm from '../members/SignInForm';
+// import SignUpForm from '../members/SignUpForm';
+// import Menu from '../layout/Menu';
 
 const styles = theme => ({
     root: {
@@ -165,12 +165,10 @@ class CustomerMain extends Component{
             const cellList = ["번호" , "프로필 이미지" , "이름" , "생년월일" , "성별" , "직업" , "설정"];
             return(
                 <div className={classes.root}>
-                    <AppBar position='static'>
+                     {/* <AppBar position='static'>  
                       <div>
                         <Toolbar>
                             <IconButton className={classes.menuButton} color='inherit' aria-label="Open drawer">
-                                {/* <MenuIcon onClick = {this.handeSlideMenu } /> */}
-                                {/* <MenuList /> */}
                                 <Menu />
                             </IconButton>
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
@@ -198,7 +196,7 @@ class CustomerMain extends Component{
                             <SignUpForm />
                         </Toolbar>
                       </div>    
-                    </AppBar>
+                    </AppBar> */}
                     <div className={classes.menu}>
                         <CustomerAdd stateRefresh={this.stateRefresh} />
                     </div>

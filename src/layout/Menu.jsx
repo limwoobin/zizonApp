@@ -9,6 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles({
   list: {
@@ -65,7 +66,14 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      <MenuIcon onClick={toggleDrawer('left', true)} />
+      <IconButton 
+          className={classes.menuButton} 
+          color='inherit' 
+          aria-label="Open drawer"
+          onClick={toggleDrawer('left', true)}
+      >
+          <MenuIcon />
+      </IconButton>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
