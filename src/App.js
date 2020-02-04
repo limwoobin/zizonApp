@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './App.scss';
 import {hot} from 'react-hot-loader';
-import CustomerMain from './components/CustomerMain';
-import Footer from './layout/Footer';
+import Main from './layout/Main';
+
 
 class App extends Component{
   constructor(props){
@@ -15,8 +15,7 @@ class App extends Component{
   render(){
     return(
       <>
-        <CustomerMain />
-        <Footer />
+        <Main />
       </>
     );
   }
