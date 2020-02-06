@@ -3,7 +3,6 @@ import './App.scss';
 import {hot} from 'react-hot-loader';
 import Main from './layout/Main';
 
-
 class App extends Component{
   constructor(props){
     super(props);
@@ -22,4 +21,3 @@ class App extends Component{
 }
 
 export default hot(module)(App);
-// export default App;

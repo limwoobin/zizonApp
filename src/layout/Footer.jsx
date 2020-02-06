@@ -19,7 +19,6 @@ class Footer extends Component{
     value: 0
   }
   render(){
-    const {classes} = this.props;
     const value = this.state;
 
     return(

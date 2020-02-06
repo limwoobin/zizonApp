@@ -23,7 +23,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 const styles = theme => ({
     root: {
       width: "100%",
-      minWidth: 1080
+      minWidth: 1080,
     },
     menu: {
       marginTop: 15,
