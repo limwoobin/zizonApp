@@ -7,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Func} from '../common/common';
-import {API} from '../api/auth';
+import {API} from '../api/Call_API';
 
 // const styles = theme => ({
 //     hidden: {
