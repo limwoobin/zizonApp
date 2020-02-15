@@ -8,7 +8,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import SignInForm from '../members/SignInForm';
 import SignUpForm from '../members/SignUpForm';
 import Menu from './Menu';
+import Button from '@material-ui/core/Button';
+import { API } from '../api/Call_API';
 import { withStyles } from '@material-ui/core/styles';
+
 
 const styles = theme => ({
     root: {
@@ -92,8 +95,20 @@ class Header extends Component{
         super(props);
         this.state = {
             searchKeyword: '',
+            isLogin: window.localStorage.getItem('isLogin'),
+            loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
         }
+        // this.callLogin = this.callLogin.bind(this);
     }
+
+    callLogin = () => {
+      this.setState({
+        isLogin : window.localStorage.getItem('isLogin'),
+        loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
+      });
+      window.location.reload();
+    }
+    
 
     handleValueChange = (e) => {
         let nextState = {};
@@ -101,9 +116,41 @@ class Header extends Component{
         this.setState(nextState);
     }
 
+    handleClickLogout = () => {
+        API.LOGOUT()
+        .then((response) => {
+          console.log(response);
+          window.localStorage.removeItem('isLogin');
+          window.localStorage.removeItem('loggedInUserEmail');
+          window.location.reload();
+        }).catch((response) => {
+          console.log(response);
+        })
+    }
+
     render(){
         const {classes} = this.props;
-
+        let renderSignButton = null;
+        let {isLogin} = this.state;
+        if(isLogin){
+          renderSignButton =  <>
+                                &nbsp;&nbsp;
+                                <Button 
+                                  variant="contained" 
+                                  color="default" 
+                                  onClick={this.handleClickLogout}
+                                >
+                                  Logout
+                                </Button>
+                              </>;
+        }else{
+          renderSignButton = <>
+                                &nbsp;&nbsp;&nbsp;
+                                <SignInForm callLogin={this.callLogin}/>
+                                &nbsp;&nbsp;
+                                <SignUpForm />
+                             </>;
+        }
         return (
             <div className={classes.root}>
                 <AppBar position='static'>
@@ -111,7 +158,11 @@ class Header extends Component{
                         <Toolbar>
                             <Menu />
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                                Drogba`s  &nbsp;&nbsp;&nbsp; IT Blog
+                               <a href="/">
+                                <font color="white">
+                                  Drogba`s  &nbsp;&nbsp;&nbsp; IT Blog
+                                </font>
+                               </a>
                             </Typography>
                             <div className={classes.grow} />
                             <div className={classes.search} >
@@ -129,10 +180,11 @@ class Header extends Component{
                                 onChange={this.handleValueChange}
                             />
                             </div>
-                            &nbsp;&nbsp;&nbsp;
-                            <SignInForm />
+                            {/* &nbsp;&nbsp;&nbsp;
+                            <SignInForm callLogin={this.loginInfo}/>
                             &nbsp;&nbsp;
-                            <SignUpForm />
+                            <SignUpForm /> */}
+                            {renderSignButton}
                         </Toolbar>
                       </div>    
                     </AppBar>

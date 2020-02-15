@@ -6,8 +6,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {Func} from '../common/common';
-import {API} from '../api/Call_API';
+import { Func } from '../common/common';
+import { API } from '../api/Call_API';
 
 // const styles = theme => ({
 //     hidden: {
@@ -54,7 +54,19 @@ class SignInForm extends Component{
         }   
         this._Login()
         .then((response) => {
-            console.log(response.data);
+            console.log(response.data.code);
+            if(response.data.code === 'DR00'){
+                console.log('Login Success');
+                this.props.callLogin();
+                window.localStorage.isLogin = true;
+                window.localStorage.loggedInUserEmail = this.state.userEmail;
+            }
+
+            this.setState({
+                open: false,
+                userEmail : '',
+                userPwd : ''
+            })
         })
         .catch((response) => {
             console.log(response);

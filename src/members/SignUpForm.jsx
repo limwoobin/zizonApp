@@ -135,7 +135,7 @@ class SignUpForm extends Component{
 
     birthdayCallback = (callBackDate) => {
         this.setState({
-            birthday: callBackDate,
+        birthday: callBackDate,
         })
     }
 
