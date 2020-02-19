@@ -16,7 +16,6 @@ class Customer extends Component{
                 <TableCell>{this.props.job}</TableCell>
                 <TableCell><CustomerDelete stateRefresh={this.props.stateRefresh} id={this.props.id}/></TableCell>
             </TableRow>
-            </div>
         )
     }
 }
