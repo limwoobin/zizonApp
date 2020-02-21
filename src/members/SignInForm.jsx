@@ -44,8 +44,14 @@ class SignInForm extends Component{
         this.setState(nextState);
     }
 
+    handleKeyPress = (e) => {
+        if(e.charCode === 13){
+            this.handleFormSubmit();
+        }
+    }
+
     handleFormSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         let emailCheck = Func.setVerifyEmail(this.state.userEmail);
         if(emailCheck === 'FAIL') return;
         if(this.state.userPwd === null){
@@ -91,7 +97,7 @@ class SignInForm extends Component{
                     <DialogContent>
                         <DialogContentText></DialogContentText>
                         <TextField autoFocus margin="dense" id="userEmail" name="userEmail" value={this.state.userEmail} label="Email Address" type="email" onChange={this.handleValueChange} fullWidth />
-                        <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} fullWidth />
+                        <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} onKeyPress={this.handleKeyPress} fullWidth />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary">
