@@ -152,6 +152,9 @@ class CustomerMain extends Component{
             this.setState({ completed: completed >= 100 ? 0 : completed + 1 });
         };
 
+        testClick = (e) => {
+          console.log(e);
+        }
         render(){
             const filteredComponents = (data) => {
                 data = data.filter((c) => {
@@ -165,38 +168,6 @@ class CustomerMain extends Component{
             const cellList = ["번호" , "프로필 이미지" , "이름" , "생년월일" , "성별" , "직업" , "설정"];
             return(
                 <div className={classes.root}>
-                     {/* <AppBar position='static'>  
-                      <div>
-                        <Toolbar>
-                            <IconButton className={classes.menuButton} color='inherit' aria-label="Open drawer">
-                                <Menu />
-                            </IconButton>
-                            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                                Drogba`s  &nbsp;&nbsp;&nbsp; IT Blog
-                            </Typography>
-                            <div className={classes.grow} />
-                            <div className={classes.search} >
-                            <div className={classes.searchIcon} >
-                                <SearchIcon />
-                            </div>
-                            <InputBase
-                                placeholder="검색하기"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                name="searchKeyword"
-                                value={this.state.searchKeyword}
-                                onChange={this.handleValueChange}
-                            />
-                            </div>
-                            &nbsp;&nbsp;&nbsp;
-                            <SignInForm />
-                            &nbsp;&nbsp;
-                            <SignUpForm />
-                        </Toolbar>
-                      </div>    
-                    </AppBar> */}
                     <div className={classes.menu}>
                         <CustomerAdd stateRefresh={this.stateRefresh} />
                     </div>

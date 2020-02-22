@@ -167,7 +167,7 @@ class SignUpForm extends Component{
         }
         return(
             <div>
-                <Button variant="contained" color="#fff000" onClick={this.handleClickOpen}>
+                <Button variant="contained" color="default" onClick={this.handleClickOpen}>
                     Sign Up
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">

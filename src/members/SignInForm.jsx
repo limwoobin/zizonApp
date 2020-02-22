@@ -20,7 +20,8 @@ class SignInForm extends Component{
         super(props);
         this.state = {
             userEmail : '',
-            userPwd : ''
+            userPwd : '',
+            open : false,
         }
     }
 

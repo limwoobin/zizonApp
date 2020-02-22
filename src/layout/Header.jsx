@@ -156,7 +156,8 @@ class Header extends Component{
                 <AppBar position='static'>
                       <div>
                         <Toolbar>
-                            <Menu />
+                            <Menu getRouter={this.props.getRouter}/>
+                            {/* <MenuItem /> */}
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                <a href="/">
                                 <font color="white">
@@ -180,10 +181,6 @@ class Header extends Component{
                                 onChange={this.handleValueChange}
                             />
                             </div>
-                            {/* &nbsp;&nbsp;&nbsp;
-                            <SignInForm callLogin={this.loginInfo}/>
-                            &nbsp;&nbsp;
-                            <SignUpForm /> */}
                             {renderSignButton}
                         </Toolbar>
                       </div>    
