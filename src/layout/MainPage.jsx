@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-// import CustomerMain from '../components/CustomerMain';
 import { Route } from 'react-router-dom';
 import { CustomerMain } from '../pages/page';
+import { API } from '../api/Call_API';
 
 class MainPage extends Component {
-    
+    // componentDidMount(){
+    //     console.log('씨발 로드안되냐??');
+    //     return API.GET_MainPage();
+    // }
 
     render() {
         return (

@@ -95,16 +95,20 @@ class Header extends Component{
         super(props);
         this.state = {
             searchKeyword: '',
-            isLogin: window.localStorage.getItem('isLogin'),
-            loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
+            // isLogin: window.localStorage.getItem('isLogin'),
+            // loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
+            isLogin: window.sessionStorage.getItem('isLogin'),
+            loggedInUserEmail : window.sessionStorage.getItem('loggedInUserEmail')
         }
         // this.callLogin = this.callLogin.bind(this);
     }
 
     callLogin = () => {
       this.setState({
-        isLogin : window.localStorage.getItem('isLogin'),
-        loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
+        // isLogin : window.localStorage.getItem('isLogin'),
+        // loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
+        isLogin : window.sessionStorage.getItem('isLogin'),
+        loggedInUserEmail : window.sessionStorage.getItem('loggedInUserEmail')
       });
       window.location.reload();
     }
@@ -120,8 +124,10 @@ class Header extends Component{
         API.LOGOUT()
         .then((response) => {
           console.log(response);
-          window.localStorage.removeItem('isLogin');
-          window.localStorage.removeItem('loggedInUserEmail');
+          // window.localStorage.removeItem('isLogin');
+          // window.localStorage.removeItem('loggedInUserEmail');
+          window.sessionStorage.removeItem('isLogin');
+          window.sessionStorage.removeItem('loggedInUserEmail');
           window.location.reload();
         }).catch((response) => {
           console.log(response);

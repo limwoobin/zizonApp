@@ -65,8 +65,10 @@ class SignInForm extends Component{
             if(response.data.code === 'DR00'){
                 console.log('Login Success');
                 this.props.callLogin();
-                window.localStorage.isLogin = true;
-                window.localStorage.loggedInUserEmail = this.state.userEmail;
+                // window.localStorage.isLogin = true;
+                // window.localStorage.loggedInUserEmail = this.state.userEmail;
+                window.sessionStorage.isLogin = true;
+                window.sessionStorage.loggedInUserEmail = this.state.userEmail;
             }
 
             this.setState({
