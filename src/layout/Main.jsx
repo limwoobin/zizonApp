@@ -10,11 +10,10 @@ class Main extends Component{
     this.state = {
       pathName: null,
     };
-
-    console.log('header:' + this.state.pathName);
   }
 
   getPathName = (path) => {
+    console.log('getPathName:' + path);
     this.setState({
       pathName : path
     })
@@ -25,7 +24,7 @@ class Main extends Component{
         <>
           <Header getRouter={this.getPathName} />
           <BrowserRouter>
-            <MainPage />
+            <MainPage routerMenu={this.state.pathName}/>
           </BrowserRouter>
           <Footer />
         </>

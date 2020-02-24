@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import SignInForm from '../members/SignInForm';
 import SignUpForm from '../members/SignUpForm';
 import Menu from './Menu';
+import Menu2 from './Menu2';
 import Button from '@material-ui/core/Button';
 import { API } from '../api/Call_API';
 import { withStyles } from '@material-ui/core/styles';
@@ -95,18 +96,14 @@ class Header extends Component{
         super(props);
         this.state = {
             searchKeyword: '',
-            // isLogin: window.localStorage.getItem('isLogin'),
-            // loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
+            menu: '',
             isLogin: window.sessionStorage.getItem('isLogin'),
             loggedInUserEmail : window.sessionStorage.getItem('loggedInUserEmail')
         }
-        // this.callLogin = this.callLogin.bind(this);
     }
 
     callLogin = () => {
       this.setState({
-        // isLogin : window.localStorage.getItem('isLogin'),
-        // loggedInUserEmail : window.localStorage.getItem('loggedInUserEmail')
         isLogin : window.sessionStorage.getItem('isLogin'),
         loggedInUserEmail : window.sessionStorage.getItem('loggedInUserEmail')
       });
@@ -124,14 +121,17 @@ class Header extends Component{
         API.LOGOUT()
         .then((response) => {
           console.log(response);
-          // window.localStorage.removeItem('isLogin');
-          // window.localStorage.removeItem('loggedInUserEmail');
           window.sessionStorage.removeItem('isLogin');
           window.sessionStorage.removeItem('loggedInUserEmail');
           window.location.reload();
         }).catch((response) => {
           console.log(response);
         })
+    }
+
+    RouterSendPath = (menu) => {
+      console.log('router:' + menu);
+      this.props.getRouter(menu);
     }
 
     render(){
@@ -162,8 +162,7 @@ class Header extends Component{
                 <AppBar position='static'>
                       <div>
                         <Toolbar>
-                            <Menu getRouter={this.props.getRouter}/>
-                            {/* <MenuItem /> */}
+                            <Menu2 getRouter={this.props.getRouter}/>
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                <a href="/">
                                 <font color="white">

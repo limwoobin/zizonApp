@@ -35,7 +35,7 @@ export default function TemporaryDrawer() {
 
   const handleClickMenu = (menu) => {
     console.log(menu);
-    // this.props.getRouter(menu);
+    // setGetRouter(menu);
   }
 
   // useEffect(() => {

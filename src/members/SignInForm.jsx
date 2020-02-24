@@ -52,7 +52,6 @@ class SignInForm extends Component{
     }
 
     handleFormSubmit = (e) => {
-        // e.preventDefault();
         let emailCheck = Func.setVerifyEmail(this.state.userEmail);
         if(emailCheck === 'FAIL') return;
         if(this.state.userPwd === null){
