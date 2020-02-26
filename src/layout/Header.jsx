@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import SignInForm from '../members/SignInForm';
 import SignUpForm from '../members/SignUpForm';
 import Menu from './Menu';
-import Menu2 from './Menu2';
 import Button from '@material-ui/core/Button';
 import { API } from '../api/Call_API';
 import { withStyles } from '@material-ui/core/styles';
@@ -162,7 +161,7 @@ class Header extends Component{
                 <AppBar position='static'>
                       <div>
                         <Toolbar>
-                            <Menu2 getRouter={this.props.getRouter}/>
+                            <Menu getRouter={this.props.getRouter}/>
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                <a href="/">
                                 <font color="white">

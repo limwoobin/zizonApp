@@ -10,15 +10,6 @@ import TableCell from '@material-ui/core/TableCell';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-// import SearchIcon from '@material-ui/icons/Search';
-// import InputBase from '@material-ui/core/InputBase';
-// import Typography from '@material-ui/core/Typography';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import IconButton from '@material-ui/core/IconButton';
-// import SignInForm from '../members/SignInForm';
-// import SignUpForm from '../members/SignUpForm';
-// import Menu from '../layout/Menu';
 
 const styles = theme => ({
     root: {
@@ -141,7 +132,7 @@ class CustomerMain extends Component{
             clearInterval(this.timer);
           }
             
-          callApi = async () => {
+          callApi = async() => {
              const response = await fetch('/dr/customer/customers');
              const body = await response.json();
              return body;
@@ -152,9 +143,6 @@ class CustomerMain extends Component{
             this.setState({ completed: completed >= 100 ? 0 : completed + 1 });
         };
 
-        testClick = (e) => {
-          console.log(e);
-        }
         render(){
             const filteredComponents = (data) => {
                 data = data.filter((c) => {
