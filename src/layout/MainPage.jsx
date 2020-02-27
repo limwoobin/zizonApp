@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { CustomerMain } from '../pages/page';
-import { API } from '../api/Call_API';
+import { 
+            CustomerMain
+           ,Test
+
+        } 
+        from '../pages/page';
+
 
 class MainPage extends Component {
-    // componentDidMount(){
-    //     console.log('씨발 로드안되냐??');
-    //     return API.GET_MainPage();
-    // }
-
+    constructor(props){
+        super(props);
+        this.state = {
+            path : '',
+        }
+        console.log('MainPage');
+        console.log(this.props.routerName);
+    }
     render() {
         return (
             <div>
-              <Route exact path = "/" component={CustomerMain}/>
+              <Route exact path = "/" component={CustomerMain} />
+              <Route path = "/test" component={Test} />
             </div>
         );
     }

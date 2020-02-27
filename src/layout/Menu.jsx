@@ -6,8 +6,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
-// import {API} from '../api/Call_API';
-import axios from 'axios';
 
 const styles = theme => ({
     list: {
@@ -23,7 +21,7 @@ class Menu extends Component{
         super(props);
         this.state = {
             left: false,
-            menuitems: '',
+            menuitems: [],
         }
     }
 
@@ -31,8 +29,14 @@ class Menu extends Component{
       setInterval(20);
       this.GetMenuItems()
         .then(res => {
-          console.log(res);
-          this.setState({menuitems: res})
+          let arr = [];
+          res.map((c) => {
+            arr.push(c.name);
+            return c;
+          })
+          this.setState({
+            menuitems: arr,
+          })
         })
         .catch(err => console.log(err));
     }
@@ -48,20 +52,9 @@ class Menu extends Component{
           return;
         }
         this.setState({[side]: open });
-        // this.setState({ ...this.state, [side]: open });
-        this.testClick();
       };
 
-    testClick = () => {
-      const arr = this.state.menuitems;
-      console.log(arr);
-      arr.map((c) => {
-        console.log(c.name);
-      })
-    }
-
     handleClickMenu = (menu) => {
-        console.log(menu);
         this.props.getRouter(menu);
       }
 
@@ -78,38 +71,22 @@ class Menu extends Component{
           onKeyDown={this.toggleDrawer(side, false)}
           style={this.divStyle.list}
         >
-          {this.menuList()}
+          {this.menuList(this.state.menuitems)}
         </div>
       );
 
-      menuList = () => (
-        <List>
-            {['Inbox2222', 'Starred222' , 'Send email', 'Drafts'].map((menu) => (
-            <ListItem 
-              button key={menu}
-              onClick={() => {this.handleClickMenu(menu)}}
-            >
-              <ListItemText primary={menu}/>
-             </ListItem>
-          ))}
-        </List>
-    );
-
-  //   menuList = () => {
-  //     const arr = this.state.menuitems;
-  //     console.log(arr);
-
-  //     return <List>
-  //         {arr.map((c) => (
-  //         <ListItem 
-  //           button key={c.name}
-  //           onClick={() => {this.handleClickMenu(c.name)}}
-  //         >
-  //           <ListItemText primary={c.name}/>
-  //          </ListItem>
-  //       ))}
-  //     </List>
-  // };
+    menuList = (menuitems) => {
+      return <List>
+          {menuitems.map((menu) => (
+          <ListItem 
+            button key={menu}
+            onClick={() => {this.handleClickMenu(menu)}}
+          >
+            <ListItemText primary={menu}/>
+           </ListItem>
+        ))}
+      </List>
+  };
 
 
     render(){
@@ -122,7 +99,6 @@ class Menu extends Component{
                     aria-label="Open drawer"
                     onClick={this.toggleDrawer('left', true)}
                 >
-                  {this.state.menuItems}
                     <MenuIcon />
                 </IconButton>
                 <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>

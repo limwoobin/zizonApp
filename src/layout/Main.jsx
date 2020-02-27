@@ -15,16 +15,19 @@ class Main extends Component{
   getPathName = (path) => {
     console.log('getPathName:' + path);
     this.setState({
-      pathName : path
+      path : path
     })
+    console.log('reload...');
   }
+
+  
 
   render(){
     return (
         <>
           <Header getRouter={this.getPathName} />
           <BrowserRouter>
-            <MainPage routerMenu={this.state.pathName}/>
+            <MainPage routerName={this.state.path}/>
           </BrowserRouter>
           <Footer />
         </>
