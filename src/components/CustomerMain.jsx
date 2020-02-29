@@ -153,7 +153,15 @@ class CustomerMain extends Component{
                 });
             };
             const {classes} = this.props;
-            const cellList = ["번호" , "프로필 이미지" , "이름" , "생년월일" , "성별" , "직업" , "설정"];
+            const cellList = [
+              {id:1 , field:"번호"} , 
+              {id:2 , field:"프로필 이미지"} , 
+              {id:3 , field:"이름"} , 
+              {id:4 , field:"생년월일"} , 
+              {id:5 , field:"성별"} , 
+              {id:6 , field:"직업"} , 
+              {id:7 , field:"설정"}
+            ];
             return(
                 <div className={classes.root}>
                     <div className={classes.menu}>
@@ -164,7 +172,7 @@ class CustomerMain extends Component{
                             <TableHead>
                                 <TableRow>
                                     {cellList.map(c => {
-                                    return <TableCell className={classes.tableHead}>{c}</TableCell>
+                                    return <TableCell className={classes.tableHead} key={c.id}>{c.field}</TableCell>
                                     })}
                                 </TableRow>
                             </TableHead>

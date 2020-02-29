@@ -128,11 +128,6 @@ class Header extends Component{
         })
     }
 
-    RouterSendPath = (menu) => {
-      console.log('router:' + menu);
-      this.props.getRouter(menu);
-    }
-
     render(){
         const {classes} = this.props;
         let renderSignButton = null;
@@ -161,7 +156,7 @@ class Header extends Component{
                 <AppBar position='static'>
                       <div>
                         <Toolbar>
-                            <Menu getRouter={this.props.getRouter}/>
+                            <Menu />
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                <a href="/">
                                 <font color="white">

@@ -1,2 +1,2 @@
 export {default as CustomerMain} from '../components/CustomerMain';
-export {default as Test} from '../menuPage/Test';
+export {default as Profile} from '../menuPage/Profile';

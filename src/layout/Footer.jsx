@@ -10,7 +10,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 const styles = theme => ({
   root: {
     width: "100%",
-    minWidth: 1080
+    minWidth: 1080,
   }
 })
 
@@ -18,6 +18,7 @@ class Footer extends Component{
   state = {
     value: 0
   }
+
   render(){
     const {classes} = this.props;
     const value = this.state;
@@ -28,6 +29,7 @@ class Footer extends Component{
             onChange={(event, newValue) => {}}
             showLabels
             className={classes.root}
+            position='static'
           >
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
             <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />

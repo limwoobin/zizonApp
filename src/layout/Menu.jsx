@@ -6,6 +6,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     list: {
@@ -24,18 +26,13 @@ class Menu extends Component{
             menuitems: [],
         }
     }
-
-    componentDidMount = () => {
+    
+    UNSAFE_componentWillMount = () => {
       setInterval(20);
       this.GetMenuItems()
         .then(res => {
-          let arr = [];
-          res.map((c) => {
-            arr.push(c.name);
-            return c;
-          })
           this.setState({
-            menuitems: arr,
+            menuitems: res,
           })
         })
         .catch(err => console.log(err));
@@ -54,42 +51,46 @@ class Menu extends Component{
         this.setState({[side]: open });
       };
 
-    handleClickMenu = (menu) => {
-        this.props.getRouter(menu);
-      }
-
     divStyle = {
         list: {
             width: 270,
-          },
+        },
+        menuHead: {
+            height: 50,
+
+        }
     }
 
-    openSide = side => (
+    render(){
+
+      const openSide = side => (
         <div
           role="presentation"
           onClick={this.toggleDrawer(side, false)}
           onKeyDown={this.toggleDrawer(side, false)}
           style={this.divStyle.list}
         >
-          {this.menuList(this.state.menuitems)}
+          {menuList(this.state.menuitems)}
         </div>
       );
 
-    menuList = (menuitems) => {
-      return <List>
-          {menuitems.map((menu) => (
-          <ListItem 
-            button key={menu}
-            onClick={() => {this.handleClickMenu(menu)}}
-          >
-            <ListItemText primary={menu}/>
-           </ListItem>
-        ))}
-      </List>
-  };
-
-
-    render(){
+    const menuList = (menuitems) => {
+      return <div>
+              <List>
+                <Divider />
+                  {menuitems.map((c) => (
+                  <Link to={c.routerName} key={c.id}>
+                    <ListItem 
+                      button key={c.name}
+                    >
+                      <ListItemText primary={c.name}/>
+                    </ListItem>
+                  </Link>
+                ))}
+                <Divider />
+              </List>
+            </div>
+    };      
         const {classes} = this.props;
         return(
             <div>
@@ -102,7 +103,7 @@ class Menu extends Component{
                     <MenuIcon />
                 </IconButton>
                 <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-                    {this.openSide('left')}
+                    {openSide('left')}
                 </Drawer>
             </div>
         )

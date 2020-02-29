@@ -8,28 +8,22 @@ class Main extends Component{
   constructor(props){
     super(props);
     this.state = {
-      pathName: null,
+      path: '/',
     };
   }
 
-  getPathName = (path) => {
-    console.log('getPathName:' + path);
-    this.setState({
-      path : path
-    })
-    console.log('reload...');
-  }
-
-  
-
   render(){
+    // const renderMainPage = (data) => {
+    //   return <MainPage routerName={data}/>;
+    // };
+
     return (
         <>
-          <Header getRouter={this.getPathName} />
           <BrowserRouter>
-            <MainPage routerName={this.state.path}/>
-          </BrowserRouter>
+          <Header />
+          <MainPage />
           <Footer />
+          </BrowserRouter>
         </>
     )
   }
