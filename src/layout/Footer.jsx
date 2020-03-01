@@ -11,6 +11,7 @@ const styles = theme => ({
   root: {
     width: "100%",
     minWidth: 1080,
+    backgroundColor: ''
   }
 })
 
@@ -30,6 +31,7 @@ class Footer extends Component{
             showLabels
             className={classes.root}
             position='static'
+            color="primary"
           >
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
             <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
