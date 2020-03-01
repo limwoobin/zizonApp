@@ -4,6 +4,10 @@ import { Route } from 'react-router-dom';
 import { 
             CustomerMain
            ,Profile
+           ,Notice
+           ,Map
+           ,Board
+           ,Think
         } 
         from '../pages/page';
 
@@ -27,7 +31,11 @@ class MainPage extends Component {
         return (
             <div className={classes.root}>
               <Route exact path = "/" component={CustomerMain} />
-              <Route path = "/Profile" component={Profile} />
+              <Route path = "/profile" component={Profile} />
+              <Route path = "/notice" component={Notice} />
+              <Route path = "/think" component={Think} />
+              <Route path = "/board" component={Board} />
+              <Route path = "/map" component={Map} />
             </div>
         );
     }

@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
+import {Func} from '../common/common';
 
 const styles = theme => ({
     list: {
@@ -78,7 +79,7 @@ class Menu extends Component{
       return <div>
               <List>
                 <Divider />
-                  {menuitems.map((c) => (
+                  {menuitems.sort(Func.Compare('id')).map((c) => (
                   <Link to={c.routerName} key={c.id}>
                     <ListItem 
                       button key={c.name}
