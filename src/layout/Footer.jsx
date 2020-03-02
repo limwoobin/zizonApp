@@ -30,7 +30,7 @@ class Footer extends Component{
             onChange={(event, newValue) => {}}
             showLabels
             className={classes.root}
-            position='static'
+            position='absolute'
             color="primary"
           >
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />

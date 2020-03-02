@@ -14,6 +14,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { green } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
+import Background from '../img/code.jpeg';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,6 +47,12 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles(theme => ({
+  frame: {
+    width:"100%",
+    minWidth:1080,
+    minHeight:700,
+    backgroundImage: "url(" + Background + ")"
+  },
   root: {
     backgroundColor: theme.palette.background.paper,
     width: 500,
@@ -54,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '10px',
+    marginTop: 'auto',
   },
   fab: {
     position: 'absolute',
@@ -109,52 +116,59 @@ export default function Profile() {
     },
   ];
 
+  const style = {
+    marginTop: '20px',
+  }
+
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="action tabs example"
+    <div className={classes.frame}>
+      <br />
+      <div className={classes.root} style={style}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="action tabs example"
+          >
+            <Tab label="Item One" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
+            <Tab label="Item Three" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          Item Onezxc
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
-        </TabPanel>
-      </SwipeableViews>
-      {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-          }}
-          unmountOnExit
-        >
-          <Fab aria-label={fab.label} className={fab.className} color={fab.color}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))}
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            Item Onezxc
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            Item Two
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            Item Three
+          </TabPanel>
+        </SwipeableViews>
+        {fabs.map((fab, index) => (
+          <Zoom
+            key={fab.color}
+            in={value === index}
+            timeout={transitionDuration}
+            style={{
+              transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
+            }}
+            unmountOnExit
+          >
+            <Fab aria-label={fab.label} className={fab.className} color={fab.color}>
+              {fab.icon}
+            </Fab>
+          </Zoom>
+        ))}
+      </div>
     </div>
   );
 }
