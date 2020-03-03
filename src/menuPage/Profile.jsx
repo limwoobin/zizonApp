@@ -50,8 +50,11 @@ const useStyles = makeStyles(theme => ({
   frame: {
     width:"100%",
     minWidth:1080,
-    minHeight:700,
-    backgroundImage: "url(" + Background + ")"
+    minHeight:600,
+    height:"100%",
+    backgroundImage: "url(" + Background + ")",
+    // filter: alpha(opacity=50),
+    // filter: 50
   },
   root: {
     backgroundColor: theme.palette.background.paper,
@@ -144,7 +147,7 @@ export default function Profile() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            Item Onezxc
+            Item One
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             Item Two
