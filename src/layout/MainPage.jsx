@@ -35,6 +35,7 @@ class MainPage extends Component {
               <Route path = "/notice" component={Notice} />
               <Route path = "/think" component={Think} />
               <Route path = "/board" component={Board} />
+              <Route path = "/1" component={Board} />
               <Route path = "/map" component={Map} />
             </div>
         );

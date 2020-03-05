@@ -16,9 +16,6 @@ const styles = theme => ({
 });
 
 class CustomerAdd extends Component{
-    // static defaultProps = {
-
-    // }    -> class 형에서 쓰이는 디폴트
     constructor(props){
         super(props);
         this.state = {
@@ -80,15 +77,6 @@ class CustomerAdd extends Component{
             }
         };
         return post(url , formData , config);
-        // return post(url , {
-        //     //headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-        //     headers:{'content-type':'multipart/form-data'},
-        //     image: this.state.file,
-        //     name: this.state.userName,
-        //     birthday: this.state.birthday,
-        //     gender: this.state.gender,
-        //     job: this.state.job
-        // } , config);
     }
 
     handleClickOpen = () => {
@@ -112,15 +100,6 @@ class CustomerAdd extends Component{
     render(){
         const { classes } = this.props;
         return (
-            // <form onSubmit={this.handleFormSubmit}>
-            // <h1>고객 추가</h1>
-            // 프로필 이미지: <input type="file" name="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
-            // 이름: <input type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
-            // 생년월일: <input type="text" name="birthday" value={this.state.birthday} onChange={this.handleValueChange} /><br/>
-            // 성별: <input type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br/>
-            // 직업: <input type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br/>
-            // <button type="submit">추가하기</button>
-            // </form>
             <div>
             <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
             고객 추가하기
@@ -148,9 +127,5 @@ class CustomerAdd extends Component{
         );
     }
 }
-
-// CustomerAdd.defaultProps = {
-
-// } -> 함수형에서 쓰이는 방식(hooks)
 
 export default withStyles(styles)(CustomerAdd);
