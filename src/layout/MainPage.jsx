@@ -6,8 +6,8 @@ import {
            ,Profile
            ,Notice
            ,Map
-           ,Board
            ,Think
+           ,BoardRouter
         } 
         from '../pages/page';
 
@@ -34,8 +34,7 @@ class MainPage extends Component {
               <Route path = "/profile" component={Profile} />
               <Route path = "/notice" component={Notice} />
               <Route path = "/think" component={Think} />
-              <Route path = "/board" component={Board} />
-              <Route path = "/1" component={Board} />
+              <Route path = "/board" component={BoardRouter} />
               <Route path = "/map" component={Map} />
             </div>
         );

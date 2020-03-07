@@ -13,10 +13,6 @@ class Main extends Component{
   }
 
   render(){
-    // const renderMainPage = (data) => {
-    //   return <MainPage routerName={data}/>;
-    // };
-
     return (
         <>
           <BrowserRouter>

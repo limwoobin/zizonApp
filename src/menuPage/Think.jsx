@@ -5,6 +5,8 @@ class Think extends Component{
         return(
             <div>
                 Think
+                {/* {this.props.location} */}
+                {/* {this.props.match} */}
             </div>
         )
     }

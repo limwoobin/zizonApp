@@ -15,4 +15,5 @@ export const API = {
     USER_EMAIL_CHK : (data) => axios.get('/dr/member/overlap/check/' + data),
     GET_Categories : () => axios.get('/dr/category/list'),
     GET_MainPage : () => axios.get('http://localhost:4000/' , '' , config),
+    GET_BoardData : (data) => axios.get('/dr/board/view/' + data , config),
 }

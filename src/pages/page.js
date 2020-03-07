@@ -4,3 +4,5 @@ export {default as Notice} from '../menuPage/Notice';
 export {default as Board} from '../board/Board'; 
 export {default as Map} from '../menuPage/Map'; 
 export {default as Think} from '../menuPage/Think'; 
+export {default as BoardView} from '../board/BoardView';
+export {default as BoardRouter} from '../board/BoardRouter';
