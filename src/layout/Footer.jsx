@@ -11,13 +11,18 @@ const styles = theme => ({
   root: {
     width: "100%",
     minWidth: 1080,
-    backgroundColor: ''
+    backgroundColor: '',
   }
 })
 
 class Footer extends Component{  
   state = {
     value: 0
+  }
+
+  style = {
+    bottom: 0,
+    position:'fixed'
   }
 
   render(){
@@ -30,8 +35,8 @@ class Footer extends Component{
             onChange={(event, newValue) => {}}
             showLabels
             className={classes.root}
-            position='fixed'
             color="primary"
+            style={this.style}
           >
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
             <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />

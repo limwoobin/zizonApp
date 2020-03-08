@@ -26,6 +26,7 @@ class MainPage extends Component {
         }
     }
 
+
     render() {
         const {classes} = this.props;
         return (

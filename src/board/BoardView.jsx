@@ -1,53 +1,51 @@
 import React , {Component} from 'react';
-import {API} from '../api/Call_API';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
+import Comment from '../common/component/Comment';
 
 class BoardView extends Component{
     constructor(props){
         super(props);
+        let data = this.props.location.state;
         this.state = {
-            id:this.props.match.params.id,
-            boardEmail: '',
-            title: '',
-            content: '',
-            comment: [],
-            regDate:'',
+            id: data.id,
+            userEmail: data.userEmail,
+            fat: data.fat,
+            test: data.test,
+            // id:this.props.match.params.id,
+            // boardEmail: '',
+            // title: '',
+            // content: '',
+            // comment: [],
+            // regDate:'',
         }
     }
 
-    componentDidMount = () => {
-        API.GET_BoardData(this.state.id)
-        .then((res) => {
-            let result = res.data;
-            if(result.code === 'DR00'){
-                console.log(result.data);
-                this.setState({
-                    boardEmail:result.data.userEmail,
-                    title:result.data.title,
-                    content:result.data.content,
-                    regDate:result.data.regDate
-                })
-            }else{
-                console.log(result.message);
-            }
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
-
-    componentWillMount = () => {
-
-    }
-
-    
+   
 
     render(){
+        const data = this.state;
         return(
             <div>
-                id: {this.state.id}  <br/>
-                boardEmail : {this.state.boardEmail} <br/>
-                title : {this.state.title} <br/>
-                content : {this.state.content} <br/>
-                regDate : {this.state.regDate}
+                <CssBaseline />
+                <Container maxWidth="md">
+                <Typography component="div" style={{ backgroundColor: '#F6F6F6', minHeight:'100vh' , fontSize: '15px' , textAlign: 'left'}}>
+                    <div>
+                        <div style={{textAlign: 'left'}}>id: {data.id}</div>
+                        <div style={{textAlign: 'center'}}>userEmail : {data.userEmail} </div>
+                    </div>
+                    fat : {data.fat} <br/>
+                    test : {data.test} <br/>
+                    
+                    <pre>
+                        <code>var x = 5;</code>
+                    </pre>  
+                    <Divider />
+                    <Comment />
+                </Typography>
+                </Container>
             </div>
         )
     }
