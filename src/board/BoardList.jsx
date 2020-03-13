@@ -7,7 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Link } from 'react-router-dom';
 import BoardList from './Board';
 
 const styles = theme => ({
@@ -20,6 +22,11 @@ const styles = theme => ({
       },
       progress: {
         margin: theme.spacing.unit * 2
+      },
+      addBtn: {
+        marginTop: 15,
+        marginBottom: 10,
+        justifyContent: 'left'
       },
 })
   
@@ -67,6 +74,11 @@ class Board extends Component{
         const {classes} = this.props;
         return(
             <div className={classes.table}>
+                <div className={classes.addBtn}>
+                <Link to="/board/add">
+                    <Button variant="contained" color="primary">추가</Button>
+                </Link>
+                </div>
                 <br />
                 <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="simple table">
