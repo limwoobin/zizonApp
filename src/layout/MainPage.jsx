@@ -32,11 +32,11 @@ class MainPage extends Component {
         return (
             <div className={classes.root}>
               <Route exact path = "/" component={CustomerMain} />
-              <Route path = "/category/profile" component={Profile} />
-              <Route path = "/category/notice" component={Notice} />
-              <Route path = "/category/think" component={Think} />
-              <Route path = "/category/board" component={BoardRouter} />
-              <Route path = "/category/map" component={Map} />
+              <Route path = "/ctg/profile" component={Profile} />
+              <Route path = "/ctg/notice" component={Notice} />
+              <Route path = "/ctg/think" component={Think} />
+              <Route path = "/ctg/board" component={BoardRouter} />
+              <Route path = "/ctg/map" component={Map} />
             </div>
         );
     }

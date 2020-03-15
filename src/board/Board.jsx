@@ -22,7 +22,7 @@ class BoardList extends Component{
                 <TableRow key={id}>
                     <TableCell component="th" scope="row">{id}</TableCell>
                     <TableCell align="right">
-                        <Link to={`/category/board/id/${id}`} 
+                        <Link to={`/ctg/board/id/${id}`} 
                               key={id}
                         >
                             {userEmail}

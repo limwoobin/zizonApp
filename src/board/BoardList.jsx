@@ -75,7 +75,7 @@ class Board extends Component{
         return(
             <div className={classes.table}>
                 <div className={classes.addBtn}>
-                <Link to="/category/board/write">
+                <Link to="/ctg/board/write">
                     <Button variant="contained" color="primary">추가</Button>
                 </Link>
                 </div>
