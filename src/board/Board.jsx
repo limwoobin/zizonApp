@@ -22,11 +22,12 @@ class BoardList extends Component{
                 <TableRow key={id}>
                     <TableCell component="th" scope="row">{id}</TableCell>
                     <TableCell align="right">
-                        {/* <Link to={`/board/${id}`} 
+                        <Link to={`/category/board/id/${id}`} 
                               key={id}
-                              onClick={() => {this.handleBoardDetail(id)}}
-                        > */}
-                        <Link to=
+                        >
+                            {userEmail}
+                        </Link>
+                        {/* <Link to=
                               {{
                                 pathname:`/board/${id}`, 
                                 state:{
@@ -39,7 +40,7 @@ class BoardList extends Component{
                                 onClick:() => {this.handleBoardDetail(id)}
                                 }}>
                             {userEmail}
-                        </Link>
+                        </Link> */}
                     </TableCell>
                     <TableCell align="right">{fat}</TableCell>
                     <TableCell align="right">{test}</TableCell>

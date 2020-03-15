@@ -160,7 +160,7 @@ class Header extends Component{
                             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                <a href="/">
                                 <font color="white">
-                                  Drogba`s  &nbsp;&nbsp;&nbsp; IT Blog
+                                  Drogba`s  &nbsp;&nbsp; IT Blog
                                 </font>
                                </a>
                             </Typography>

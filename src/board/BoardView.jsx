@@ -3,26 +3,40 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
-import Comment from '../common/component/Comment';
+import CommentList from '../common/component/Comment/CommentList';
+import {API} from '../api/Call_API';
 
 class BoardView extends Component{
     constructor(props){
         super(props);
-        let data = this.props.location.state;
         this.state = {
-            id: data.id,
-            userEmail: data.userEmail,
-            fat: data.fat,
-            test: data.test,
-            // id:this.props.match.params.id,
-            // boardEmail: '',
-            // title: '',
-            // content: '',
-            // comment: [],
-            // regDate:'',
+            id:this.props.match.params.id,
+            userEmail: '',
+            boardType: '',
+            title: '',
+            content: '',
+            comment: [],
+            regDate:'',
         }
     }
 
+    componentDidMount = () => {
+        API.GET_BoardData(this.state.id)
+        .then(response => {
+            console.log(response.data);
+            const data = response.data.data;
+            this.setState({
+                userEmail: data.userEmail,
+                boardType: data.boardType,
+                title: data.title,
+                content: data.content,
+                comment: data.comment,
+                regDate: data.regDate,
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    }
    
 
     render(){
@@ -33,17 +47,19 @@ class BoardView extends Component{
                 <Container maxWidth="md">
                 <Typography component="div" style={{ backgroundColor: '#F6F6F6', minHeight:'100vh' , fontSize: '15px' , textAlign: 'left'}}>
                     <div>
-                        <div style={{textAlign: 'left'}}>id: {data.id}</div>
-                        <div style={{textAlign: 'center'}}>userEmail : {data.userEmail} </div>
+                        제목 : {data.title} <br/>
+                        작성자 : {data.userEmail} <br/>
+                        작성일시 : {data.regDate} <br/>
+                        <br /><br />
+                        <Divider />
+                        내용 : {data.content}
+                        <pre>
+                            <code>var x = 5;</code>
+                        </pre>  
+                        <br /><br />
                     </div>
-                    fat : {data.fat} <br/>
-                    test : {data.test} <br/>
-                    
-                    <pre>
-                        <code>var x = 5;</code>
-                    </pre>  
                     <Divider />
-                    <Comment />
+                    <CommentList comment={this.state.comment}/>
                 </Typography>
                 </Container>
             </div>

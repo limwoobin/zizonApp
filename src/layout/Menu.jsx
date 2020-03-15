@@ -80,13 +80,20 @@ class Menu extends Component{
               <List>
                 <Divider />
                   {menuitems.sort(Func.Compare('id')).map((c) => (
-                  <Link to={c.routerName} key={c.id}>
+                  <Link to={`/category/${c.routerName}`} key={c.id}>
                     <ListItem 
                       button key={c.name}
                     >
                       <ListItemText primary={c.name}/>
                     </ListItem>
                   </Link>
+                  // <a href={`/${c.routerName}`}>
+                  //   <ListItem 
+                  //     button key={c.name}
+                  //   >
+                  //     <ListItemText primary={c.name}/>
+                  //   </ListItem>
+                  //   </a>
                 ))}
                 <Divider />
               </List>
