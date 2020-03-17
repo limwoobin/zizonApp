@@ -10,7 +10,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
-import BoardList from './Board';
+import Board from './Board';
+import {API} from '../api/Call_API';
+
 
 const styles = theme => ({
     table: {
@@ -31,18 +33,18 @@ const styles = theme => ({
 })
   
 
-class Board extends Component{
+class BoardList extends Component{
     constructor(props){
         super(props);
         this.state = {
-            boards: [
-                {'id':1 , 'userEmail':'drogba' , 'fat':'100' , 'test':'test'},
-                {'id':2 , 'userEmail':'maluda' , 'fat':'200' , 'test':'test'},
-                {'id':3 , 'userEmail':'yakuza' , 'fat':'300' , 'test':'test'},
-                {'id':4 , 'userEmail':'sise' , 'fat':'400' , 'test':'test'},
-                {'id':5 , 'userEmail':'mangala' , 'fat':'500' , 'test':'test'},
-              ],
-            //   boards : '',
+            // boards: [
+            //     {'id':1 , 'userEmail':'drogba' , 'fat':'100' , 'test':'test'},
+            //     {'id':2 , 'userEmail':'maluda' , 'fat':'200' , 'test':'test'},
+            //     {'id':3 , 'userEmail':'yakuza' , 'fat':'300' , 'test':'test'},
+            //     {'id':4 , 'userEmail':'sise' , 'fat':'400' , 'test':'test'},
+            //     {'id':5 , 'userEmail':'mangala' , 'fat':'500' , 'test':'test'},
+            //   ],
+              boards : [],
               searchKeyword: '',
               completed: 0,
         }
@@ -50,6 +52,15 @@ class Board extends Component{
 
     componentDidMount = () => {
         this.timer = setInterval(this.progress, 20);
+        API.GET_BoardList()
+        .then((res) => {
+            console.log(res.data.data);
+            this.setState({
+                boards: res.data.data
+            })
+        }).catch((err) => {
+
+        })
     }
 
     componentWillMount = () => {
@@ -67,7 +78,16 @@ class Board extends Component{
                 return c.userEmail.indexOf(this.state.searchKeyword) > -1;
             });
             return data.map((c) => {
-                return <BoardList key={c.id}  id={c.id}  userEmail={c.userEmail} fat={c.fat} test={c.test} />
+                return <Board
+                            key={c.boardId}
+                            boardId={c.boardId}
+                            userEmail={c.userEmail} 
+                            boardType={c.boardType} 
+                            title={c.title}
+                            content={c.content}
+                            regDate={c.regDate}
+                            view={c.view}
+                        />
             })
         };
 
@@ -84,10 +104,10 @@ class Board extends Component{
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>id</TableCell>
-                                <TableCell align="right">작성자</TableCell>
-                                <TableCell align="right">fat</TableCell>
-                                <TableCell align="right">test</TableCell>
+                                <TableCell align="left">작성자</TableCell>
+                                <TableCell align="left">제목</TableCell>
+                                <TableCell align="right">조회수</TableCell>
+                                <TableCell align="right">등록일</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -109,4 +129,4 @@ class Board extends Component{
 
 
 
-export default withStyles(styles)(Board);
+export default withStyles(styles)(BoardList);

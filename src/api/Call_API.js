@@ -9,6 +9,7 @@ const url = {
     USER_EMAIL_CHK  : '/dr/member/overlap/check/',
     GET_Categories  : '/dr/category/list',
     GET_MainPage    : 'http://localhost:4000/',
+    GET_BoardList   : '/dr/board/list',
     GET_BoardData   : '/dr/board/view/',
 }
 
@@ -28,5 +29,6 @@ export const API = {
     USER_EMAIL_CHK      : (data) => axios.get(url.USER_EMAIL_CHK + data),
     GET_Categories      : () => axios.get(url.GET_Categories),
     GET_MainPage        : () => axios.get(url.GET_MainPage , '' , config),
+    GET_BoardList       : () => axios.get(url.GET_BoardList, config),
     GET_BoardData       : (data) => axios.get(url.GET_BoardData + data , config),
 }

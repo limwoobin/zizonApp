@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
 export const Func = {
@@ -15,14 +17,7 @@ export const Func = {
             return a[key] > b[key] ? 1 : (a[key] < b[key] ? -1 : 0);
         };
     },
-    dateConvert : (changeDate) => {
-        let year = changeDate.getFullYear();
-        let month = changeDate.getMonth() + 1;
-        let day = changeDate.getDate();
-        if(month < 10) month = '0' + month;
-        if(day < 10) day = '0' + day;
-        changeDate = year + '/' + month + '/' + day;
-        console.log(changeDate);
-        return changeDate;
-    }   
+    DateFormat : (date) => {
+        return moment(date).format('YYYY/MM/DD HH:mm:ss');
+    }
 }

@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import CommentList from '../common/component/Comment/CommentList';
 import {API} from '../api/Call_API';
+import {Func} from '../common/common';
 
 class BoardView extends Component{
     constructor(props){
@@ -21,6 +22,7 @@ class BoardView extends Component{
     }
 
     componentDidMount = () => {
+        console.log(this.state.id);
         API.GET_BoardData(this.state.id)
         .then(response => {
             console.log(response.data);
@@ -49,7 +51,7 @@ class BoardView extends Component{
                     <div>
                         제목 : {data.title} <br/>
                         작성자 : {data.userEmail} <br/>
-                        작성일시 : {data.regDate} <br/>
+                        작성일시 : {Func.DateFormat(data.regDate)} <br/>
                         <br /><br />
                         <Divider />
                         내용 : {data.content}

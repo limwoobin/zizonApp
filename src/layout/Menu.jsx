@@ -87,13 +87,6 @@ class Menu extends Component{
                       <ListItemText primary={c.name}/>
                     </ListItem>
                   </Link>
-                  // <a href={`/${c.routerName}`}>
-                  //   <ListItem 
-                  //     button key={c.name}
-                  //   >
-                  //     <ListItemText primary={c.name}/>
-                  //   </ListItem>
-                  //   </a>
                 ))}
                 <Divider />
               </List>
