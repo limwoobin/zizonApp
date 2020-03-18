@@ -13,7 +13,7 @@ class Board extends Component{
 
 
     render(){
-        const {boardId , userEmail , title , view , regDate} = this.props;
+        const {boardId , userEmail , title , views , regDate} = this.props;
         return (
                 <TableRow key={boardId}>
                     <TableCell component="th" scope="row" align="left">{userEmail}</TableCell>
@@ -24,7 +24,7 @@ class Board extends Component{
                             {title}
                         </Link>
                     </TableCell>
-                    <TableCell align="right">{view}</TableCell>
+                    <TableCell align="right">{views}</TableCell>
                     <TableCell align="right">
                         {Func.DateFormat(regDate)}
                     </TableCell>

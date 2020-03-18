@@ -11,7 +11,9 @@ class BoardView extends Component{
     constructor(props){
         super(props);
         this.state = {
+            _id: '',
             id:this.props.match.params.id,
+            views: 0,
             userEmail: '',
             boardType: '',
             title: '',
@@ -28,12 +30,14 @@ class BoardView extends Component{
             console.log(response.data);
             const data = response.data.data;
             this.setState({
+                _id: data._id,
+                views: data.views,
                 userEmail: data.userEmail,
                 boardType: data.boardType,
                 title: data.title,
                 content: data.content,
                 comment: data.comment,
-                regDate: data.regDate,
+                regDate: Func.DateFormat(data.regDate),
             })
         }).catch(err => {
             console.log(err);
@@ -49,9 +53,11 @@ class BoardView extends Component{
                 <Container maxWidth="md">
                 <Typography component="div" style={{ backgroundColor: '#F6F6F6', minHeight:'100vh' , fontSize: '15px' , textAlign: 'left'}}>
                     <div>
+                        조회수 : {data.views} <br/>
                         제목 : {data.title} <br/>
                         작성자 : {data.userEmail} <br/>
-                        작성일시 : {Func.DateFormat(data.regDate)} <br/>
+                        {/* 작성일시 : {Func.DateFormat(data.regDate)} <br/> */}
+                        작성일시 : {data.regDate} <br/>
                         <br /><br />
                         <Divider />
                         내용 : {data.content}

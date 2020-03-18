@@ -37,13 +37,6 @@ class BoardList extends Component{
     constructor(props){
         super(props);
         this.state = {
-            // boards: [
-            //     {'id':1 , 'userEmail':'drogba' , 'fat':'100' , 'test':'test'},
-            //     {'id':2 , 'userEmail':'maluda' , 'fat':'200' , 'test':'test'},
-            //     {'id':3 , 'userEmail':'yakuza' , 'fat':'300' , 'test':'test'},
-            //     {'id':4 , 'userEmail':'sise' , 'fat':'400' , 'test':'test'},
-            //     {'id':5 , 'userEmail':'mangala' , 'fat':'500' , 'test':'test'},
-            //   ],
               boards : [],
               searchKeyword: '',
               completed: 0,
@@ -86,7 +79,7 @@ class BoardList extends Component{
                             title={c.title}
                             content={c.content}
                             regDate={c.regDate}
-                            view={c.view}
+                            views={c.views}
                         />
             })
         };
