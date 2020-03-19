@@ -66,10 +66,7 @@ class BoardList extends Component{
     }
  
     render(){
-        const filteredBoards = (data) => {
-            data = data.filter((c) => {
-                return c.userEmail.indexOf(this.state.searchKeyword) > -1;
-            });
+        const boards = (data) => {
             return data.map((c) => {
                 return <Board
                             key={c.boardId}
@@ -105,7 +102,7 @@ class BoardList extends Component{
                         </TableHead>
                         <TableBody>
                             {this.state.boards ?
-                                filteredBoards(this.state.boards) : 
+                                boards(this.state.boards) : 
                                 <TableRow>
                                     <TableCell colSpan="4" align="center">
                                     <CircularProgress className={classes.progress} variant='determinate' value={this.state.completed} />

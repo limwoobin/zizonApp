@@ -1,4 +1,6 @@
 import React , {Component} from 'react';
+import Divider from '@material-ui/core/Divider';
+import {Func} from '../../common';
 
 class Comment extends Component{
     constructor(props){
@@ -9,9 +11,12 @@ class Comment extends Component{
     }
 
     render(){
+        const {image , userEmail , content , modiDate} = this.props;
         return (
             <div>
-                Comment
+                {image}{userEmail} : {content} &nbsp; {Func.DateFormat(modiDate)} <br/>
+                {/* &nbsp;&nbsp;&nbsp;&nbsp;  대댓글 */}
+                <Divider />
             </div>
         )
     }
