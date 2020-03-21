@@ -48,14 +48,15 @@ class BoardView extends Component{
     render(){
         const data = this.state;
         const renderComments = (data) => {
+            console.log('data:' + data);
             return data.map((c) => {
-                console.log('c:' + c);
                 return <Comment 
                             key={c._id}
                             commentId={c.commentId}
                             userEmail={c.userEmail}
                             content={c.content}
                             modiDate={c.modiDate}
+                            childComments={c.childComments}
                         />
             });
         }
@@ -63,7 +64,7 @@ class BoardView extends Component{
             <div>
                 <CssBaseline />
                 <Container maxWidth="md">
-                <Typography component="div" style={{ backgroundColor: '#F6F6F6', minHeight:'100vh' , fontSize: '15px' , textAlign: 'left'}}>
+                <Typography component="div" style={{ backgroundColor: '#F6F6F6' , minHeight:'100%' , fontSize: '15px' , textAlign: 'left'}}>
                     <div>
                         조회수 : {data.views} <br/>
                         제목 : {data.title} <br/>

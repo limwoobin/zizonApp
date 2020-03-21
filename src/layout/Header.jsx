@@ -16,7 +16,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     root: {
       width: "100%",
-      minWidth: 1080
     },
     menu: {
       marginTop: 15,

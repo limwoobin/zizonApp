@@ -69,7 +69,8 @@ class BoardList extends Component{
         const boards = (data) => {
             return data.map((c) => {
                 return <Board
-                            key={c.boardId}
+                            key={c._id}
+                            _id={c._id}
                             boardId={c.boardId}
                             userEmail={c.userEmail} 
                             boardType={c.boardType} 

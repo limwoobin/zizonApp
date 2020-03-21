@@ -14,7 +14,7 @@ import {
 const styles = theme => ({
     root: {
         width: "100%",
-        minHeight: 200
+        minHeight: 200,
     }
 });
 

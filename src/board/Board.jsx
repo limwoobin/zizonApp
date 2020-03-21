@@ -13,12 +13,12 @@ class Board extends Component{
 
 
     render(){
-        const {boardId , userEmail , title , views , regDate} = this.props;
+        const {_id , boardId , userEmail , title , views , regDate} = this.props;
         return (
                 <TableRow key={boardId}>
                     <TableCell component="th" scope="row" align="left">{userEmail}</TableCell>
                     <TableCell align="left">
-                        <Link to={`/ctg/board/id/${boardId}`} 
+                        <Link to={`/ctg/board/id/${_id}`} 
                               key={boardId}
                         >
                             {title}
