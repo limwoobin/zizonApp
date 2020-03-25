@@ -8,6 +8,7 @@ import {
            ,Map
            ,Think
            ,BoardRouter
+           ,LoginView
         } 
         from '../pages/page';
 
@@ -37,6 +38,7 @@ class MainPage extends Component {
               <Route path = "/ctg/think" component={Think} />
               <Route path = "/ctg/board" component={BoardRouter} />
               <Route path = "/ctg/map" component={Map} />
+              <Route path = "/login" component={LoginView} />
             </div>
         );
     }
