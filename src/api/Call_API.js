@@ -11,6 +11,7 @@ const url = {
     GET_MainPage    : 'http://localhost:4000/',
     GET_BoardList   : '/dr/board/list',
     GET_BoardData   : '/dr/board/view/',
+    BoardInsert     : '/dr/board/write',
 }
 
 const config = {
@@ -31,4 +32,5 @@ export const API = {
     GET_MainPage        : () => axios.get(url.GET_MainPage , '' , config),
     GET_BoardList       : () => axios.get(url.GET_BoardList, config),
     GET_BoardData       : (data) => axios.get(url.GET_BoardData + data , config),
+    BoardInsert         : (data) => axios.post(url.BoardInsert , data , config),
 }

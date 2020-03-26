@@ -64,8 +64,6 @@ class SignInForm extends Component{
             if(response.data.code === 'DR00'){
                 console.log('Login Success');
                 this.props.callLogin();
-                // window.localStorage.isLogin = true;
-                // window.localStorage.loggedInUserEmail = this.state.userEmail;
                 window.sessionStorage.isLogin = true;
                 window.sessionStorage.loggedInUserEmail = this.state.userEmail;
             }
@@ -92,7 +90,7 @@ class SignInForm extends Component{
         return(
             <div>
                 <Button variant="contained" color="default" onClick={this.handleClickOpen}>
-                    Sign In
+                    로그인
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Sign In</DialogTitle>

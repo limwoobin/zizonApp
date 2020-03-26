@@ -139,7 +139,7 @@ class Header extends Component{
                                   color="default" 
                                   onClick={this.handleClickLogout}
                                 >
-                                  Logout
+                                  로그아웃
                                 </Button>
                               </>;
         }else{

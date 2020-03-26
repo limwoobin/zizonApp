@@ -135,7 +135,7 @@ class SignUpForm extends Component{
 
     birthdayCallback = (callBackDate) => {
         this.setState({
-        birthday: callBackDate,
+            birthday: callBackDate,
         })
     }
 
@@ -168,7 +168,7 @@ class SignUpForm extends Component{
         return(
             <div>
                 <Button variant="contained" color="default" onClick={this.handleClickOpen}>
-                    Sign Up
+                    회원가입
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
@@ -178,9 +178,7 @@ class SignUpForm extends Component{
                                 occasionally.
                             </DialogContentText>
                             {emailInputType}
-                            {/* {this.state.userEmailStatus === 0} */}
                             {emailAvailableCheckButton}&nbsp;&nbsp;&nbsp;
-                            {/* <Button variant="outlined" color="primary" onClick={this.handleMailSend}>Send Mail</Button> */}
                             <TextField autoFocus margin="dense" id="userPwd" name="userPwd" value={this.state.userPwd} label="password" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userPwdChk" name="userPwdChk" value={this.state.userPwdChk} label="password check" type="password" onChange={this.handleValueChange} fullWidth />
                             <TextField autoFocus margin="dense" id="userNm" name="userNm" value={this.state.userNm} label="name" type="text" onChange={this.handleValueChange} fullWidth />

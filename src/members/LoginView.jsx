@@ -1,15 +1,17 @@
-import React , {Component} from 'react';
+import React  from 'react';
+import Button from '@material-ui/core/Button';
 
-class LoginView extends Component{
+export default function LoginView() {
+    return (
+        <div>
+            <Button variant="contained" color="primary" disableElevation>
+                로그인
+            </Button>
+            <Button variant="contained" color="primary" disableElevation>
+                회원가입
+            </Button>
+        </div>
+    );
+  }
 
-    
-    render(){
-        return (
-            <div>
-                Login View...
-            </div>
-        )
-    }
-}
 
-export default LoginView;

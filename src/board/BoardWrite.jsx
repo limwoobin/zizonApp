@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import {Redirect} from 'react-router-dom';
-
+import {API} from '../api/Call_API';
 
 const styles = theme => ({
     root: {
@@ -18,7 +18,6 @@ const styles = theme => ({
       },
       textField:{
         width: '50%',
-        // align: 'center',
       }
 
 });
@@ -29,17 +28,37 @@ class BoardWrite extends Component{
         this.state = {
             title: '',
             userEmail: '',
+            content: '',
+            image : '',
         }
-    }
-
-    componentDidMount = () => {
-        
     }
 
     handleValueChange = (e) => {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
+    }
+
+    handleBoardWrite = () => {
+        const data = {};
+        data.title = this.state.title;
+        data.userEmail = window.sessionStorage.loggedInUserEmail;
+        data.content = this.state.content;
+        data.image = this.state.image;
+        this.callBoardInsert(data)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    callBoardInsert = async(data) => {
+        const response = await API.BoardInsert(data);
+        console.log(response);
+        console.log(response.data);
+        return response;
     }
 
     render(){
@@ -49,28 +68,20 @@ class BoardWrite extends Component{
                 <CssBaseline />
                 <Container maxWidth="md">
                 <Typography component="div" style={{ backgroundColor: '#F6F6F6' , minHeight:'100%' , fontSize: '15px' , textAlign: 'left'}}>
-                    {this.props.userEmail} ? 
-                    <div>
-                        제목 : <TextField className={classes.textField} label="title" variant="outlined" /> <br/>
-                        작성자 : {this.state.userEmail}<br/>
-                        <br /><br />
-                        <Divider />
-                        내용 : <TextField className={classes.textField} label="content" variant="outlined" /> <br/> 
-                        <br /><br />
-                    </div>
-                    <Button variant="contained" color="primary">작성</Button>
-                    <Divider />
-                     : <Redirect to='/login' />
-                    {/* <div>
-                        제목 : <TextField className={classes.textField} label="title" variant="outlined" /> <br/>
-                        작성자 : {this.state.userEmail}<br/>
-                        <br /><br />
-                        <Divider />
-                        내용 : <TextField className={classes.textField} label="content" variant="outlined" /> <br/> 
-                        <br /><br />
-                    </div>
-                    <Button variant="contained" color="primary">작성</Button>
-                    <Divider /> */}
+                    {/* {window.sessionStorage.isLogin ?  */}
+                        <div>
+                            <div>
+                                제목 : <TextField className={classes.textField} label="title" variant="outlined" /> <br/>
+                                작성자 : {window.sessionStorage.loggedInUserEmail}<br/>
+                                <br /><br />
+                                <Divider />
+                                내용 : <TextField className={classes.textField} label="content" variant="outlined" /> <br/> 
+                                <br /><br />
+                            </div>
+                            <Button variant="contained" color="primary" onClick={this.handleBoardWrite}>작성</Button> 
+                            <Divider />
+                        </div> 
+                        {/* : <Redirect to='/login' /> } */}
                 </Typography>
                 </Container>
             </div>
